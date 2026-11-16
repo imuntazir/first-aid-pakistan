@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>First Aid Pakistan — فرسٹ ایڈ پاکستان</title>
+<meta name="description" content="Free offline first-aid guide for Pakistan in English, Urdu and Roman Urdu. Call Rescue 1122 in any emergency.">
+<meta name="theme-color" content="#c62828">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="icon-192.svg">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-cross" aria-hidden="true">✚</span>
+      <div>
+        <h1 id="app-title">First Aid Pakistan</h1>
+        <p id="app-tagline" class="tagline">Quick first-aid help in an emergency — before Rescue 1122 arrives.</p>
+      </div>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Language / زبان">
+      <button type="button" data-lang="en" class="lang-btn" aria-pressed="true">English</button>
+      <button type="button" data-lang="ur" class="lang-btn" aria-pressed="false">اردو</button>
+      <button type="button" data-lang="ro" class="lang-btn" aria-pressed="false">Roman Urdu</button>
+    </div>
+  </div>
+</header>
+
+<nav class="emergency-strip" aria-label="Emergency numbers">
+  <a class="em-btn rescue" href="tel:1122"><span class="em-num">1122</span><span class="em-label" data-i18n="em_rescue">Rescue 1122</span></a>
+  <a class="em-btn edhi" href="tel:115"><span class="em-num">115</span><span class="em-label" data-i18n="em_edhi">Edhi Ambulance</span></a>
+  <a class="em-btn police" href="tel:15"><span class="em-num">15</span><span class="em-label" data-i18n="em_police">Police</span></a>
+  <a class="em-btn fire" href="tel:16"><span class="em-num">16</span><span class="em-label" data-i18n="em_fire">Fire Brigade</span></a>
+</nav>
+
+<div id="offline-banner" class="offline-banner" hidden>
+  <span aria-hidden="true">📶</span> <span data-i18n="offline_msg">You are offline — this saved guide still works.</span>
+</div>
+
+<main id="main">
+  <div id="home-view">
+    <div class="disclaimer" role="note">
+      <strong data-i18n="disclaimer_title">Important — read first</strong>
+      <p data-i18n="disclaimer_body">This guide is a quick reference only. It is not a substitute for professional first-aid training or medical care. In any emergency, call 1122 first.</p>
+    </div>
+
+    <section class="scene-safety" aria-labelledby="scene-heading">
+      <h2 id="scene-heading" data-i18n="scene_title">Before you start — stay safe</h2>
+      <ol id="scene-steps" class="steps"></ol>
+    </section>
+
+    <div class="search-wrap">
+      <label for="search" class="visually-hidden" data-i18n="search_label">Search first-aid topics</label>
+      <input type="search" id="search" autocomplete="off" placeholder="Search — e.g. CPR, burns, snake bite…" aria-label="Search first-aid topics">
+    </div>
+
+    <section aria-labelledby="topics-heading">
+      <h2 id="topics-heading" class="section-heading" data-i18n="topics_title">First-aid topics</h2>
+      <div id="topic-grid" class="topic-grid"></div>
+      <p id="no-results" class="no-results" hidden data-i18n="no_results">No topic matches your search. Try another word, or call 1122 for help.</p>
+    </section>
+  </div>
+
+  <div id="detail-view" hidden>
+    <button type="button" id="back-btn" class="back-btn">← <span data-i18n="back">Back to topics</span></button>
+    <article class="topic-detail">
+      <div class="detail-head">
+        <span id="detail-icon" class="detail-icon" aria-hidden="true"></span>
+        <div>
+          <h2 id="detail-title"></h2>
+          <p id="detail-desc" class="detail-desc"></p>
+        </div>
+      </div>
+      <ol id="detail-steps" class="steps detail-steps"></ol>
+      <a class="call-cta" href="tel:1122">📞 <span data-i18n="call_1122">Call 1122 now</span></a>
+      <p id="detail-note" class="detail-note"></p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p data-i18n="footer_disclaimer">First Aid Pakistan is a free quick-reference guide. It does not replace professional first-aid training or medical care. In any emergency, call Rescue 1122 first.</p>
+  <p><span data-i18n="footer_sources">Guidance based on British Red Cross, St John Ambulance, Resuscitation Council UK and WHO advice, adapted for Pakistan. Content reviewed November 2026.</span></p>
+  <p class="footer-meta"><span data-i18n="footer_offline">Works offline once opened — install it from your browser menu to keep it on your phone.</span></p>
+</footer>
+
+<script src="app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function (err) {
+      console.warn('Service worker registration failed:', err);
+    });
+  });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+# Dependencies / build output (none — vanilla HTML/CSS/JS, but keep these out if added later)
+node_modules/
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
